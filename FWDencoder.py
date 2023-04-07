@@ -10,7 +10,7 @@ myMotor = qwiic_scmd.QwiicScmd()
 def runExample(revs: float):
     tic = time.perf_counter()
     print("Motor Test.")
-    DECAY = 0.0003
+    DECAY = 0.003
     R_MTR = 0
     L_MTR = 1
     FWD = 0
