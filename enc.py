@@ -44,15 +44,15 @@ def runExample(revs: float):
     i = 0
     #normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
-    while(myEncoders.count1 < target ): #- target/5
+    while(myEncoders.count1 < target - target/5): #- target/5
         myMotor.set_drive(R_MTR,FWD,speed)
         
-    # while (myEncoders.count1 < target):
-    #     if(speed > speed * 0.3):
-    #         speed_norm = speed_norm*math.exp(-DECAY*i)
-    #         speed = (speed_max - speed_min)*speed_norm + speed_min
-    #         i = i + 1
-    #     myMotor.set_drive(R_MTR,FWD,speed)
+    while (myEncoders.count1 < target):
+        if(speed > speed * 0.3):
+            speed_norm = speed_norm*math.exp(-DECAY*i)
+            speed = (speed_max - speed_min)*speed_norm + speed_min
+            i = i + 1
+        myMotor.set_drive(R_MTR,FWD,speed)
     toc = time.perf_counter()
     print(f"Finished in {toc - tic:0.4f} seconds")
     myMotor.disable()
