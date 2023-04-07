@@ -13,7 +13,7 @@ def runExample(revs: float):
     DECAY = 0.0003
     R_MTR = 0
     L_MTR = 1
-    FWD = 0
+    FWD = 1
     BWD = 1
     SLEEP = 0.1
     speed_min = 20
