@@ -49,11 +49,11 @@ def runExample(revs: float):
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
     print("here4")
     start_speed = 0.3*speed
-    while (myEncoders.count1 < ticks_per_rev):
-        if(start_speed < speed):
-            start_speed = 0.01*start_speed*math.exp(DECAY*i)
-            i = i + 1
-        myMotor.set_drive(R_MTR,FWD,start_speed)
+    # while (myEncoders.count1 < ticks_per_rev):
+    #     if(start_speed < speed):
+    #         start_speed = 0.01*start_speed*math.exp(DECAY*i)
+    #         i = i + 1
+    #     myMotor.set_drive(R_MTR,FWD,start_speed)
     
     while(myEncoders.count1 < target - target/5): 
         myMotor.set_drive(R_MTR,FWD,speed)
