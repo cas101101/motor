@@ -55,7 +55,7 @@ def runExample(revs: float):
     #         i = i + 1
     #     myMotor.set_drive(R_MTR,FWD,start_speed)
     
-    while(myEncoders.count1 < target - target/5): 
+    while(myEncoders.count1 < target - target/10): 
         myMotor.set_drive(R_MTR,FWD,speed)
         
     while (myEncoders.count1 < target):
