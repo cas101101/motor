@@ -37,14 +37,17 @@ def runExample(revs: float):
     time.sleep(.250)
     
     myEncoders = qwiic_dual_encoder_reader.QwiicDualEncoderReader()
+    print("here1")
     myEncoders.begin()
-    #myEncoders.count1 = 0
+    print("here2")
+    myEncoders.count1 = 0
+    print("here3")
     speed = 150
     target =  ticks_per_rev*revs
     i = 0
     #normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
-    
+    print("here4")
     start_speed = 0.3*speed
     while (myEncoders.count1 < ticks_per_rev):
         if(start_speed < speed):
