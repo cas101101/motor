@@ -66,7 +66,7 @@ def runExample(revs: float):
 
 if __name__ == '__main__':
     try:
-        runExample(1)
+        runExample(4)
 
     except (KeyboardInterrupt, SystemExit) as exErr:
         print("Ending example.")
