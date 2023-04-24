@@ -69,6 +69,7 @@ def set_speed(distance: float, speed: float, FWD: bool):
     print(myEncoders.count1)
     left.set_drive(L_MTR,FWD,speed)
     time.sleep(5)
+    print("done with drive")
     i = 0
     # normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
