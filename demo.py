@@ -12,7 +12,7 @@ while(True):
     angle = int(input("Enter angle: "))
     tic = time.perf_counter()
     if (angle > -45 and angle < 45):
-        steer.move_servo_position(0, angle-28)
+        steer.move_servo_position(0, angle+28)
     else:
         print("Sorry, angle invalid. Pick a number on the range [-45, 45]")
     
