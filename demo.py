@@ -63,7 +63,6 @@ def set_speed(distance: float, speed: float, dir: bool):
     myEncoders = qwiic_dual_encoder_reader.QwiicDualEncoderReader()
     myEncoders.begin()
     myEncoders.count1 = 0
-    speed = 250
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
     print(target)
     print(myEncoders.count1)
