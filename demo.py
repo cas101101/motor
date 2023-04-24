@@ -7,10 +7,11 @@ steer.restart()
 
 steer.move_servo_position(0, 0)
 
+# +28 degrees is straight ahead
 while(True):
     angle = int(input("Enter angle: "))
     tic = time.perf_counter()
-    if (angle > 0 and angle < 120):
+    if (angle > -91 and angle < 91):
         steer.move_servo_position(0, angle)
     else:
         print("Sorry, angle invalid. Pick a number on the range [0, 120]")
