@@ -8,7 +8,7 @@ import qwiic_dual_encoder_reader
 
 # The first two I2C channels
 left = qwiic_scmd.QwiicScmd(0x5D)
-right = qwiic_scmd.QwiicScmd(0x58)
+#right = qwiic_scmd.QwiicScmd(0x58)
 # Initialize Constructor
 steer = pi_servo_hat.PiServoHat()
 steer.restart()
@@ -40,19 +40,19 @@ def set_speed(distance: float, speed: float, FWD: bool):
     ticks_per_rev = 9.7*48
     wheel_radius = 3.25
     
-    if right.connected == False:
-        print("Motor Driver not connected. Check connections.", \
-            file=sys.stderr)
-        return
+    # if right.connected == False:
+    #     print("Motor Driver not connected. Check connections.", \
+    #         file=sys.stderr)
+    #     return
     left.begin()
-    right.begin()
+    #right.begin()
     time.sleep(.250)
 
     # Zero Motor Speeds
     left.set_drive(0,0,0)
     left.set_drive(1,0,0)
-    right.set_drive(0,0,0)
-    right.set_drive(1,0,0)
+    #right.set_drive(0,0,0)
+    #right.set_drive(1,0,0)
 
     left.enable()
     print("Motor enabled")
@@ -68,7 +68,7 @@ def set_speed(distance: float, speed: float, FWD: bool):
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
     while(myEncoders.count1 < target - target/5): #- target/5
         left.set_drive(L_MTR,FWD,speed)
-        right.set_drive(R_MTR,FWD,speed)
+        #right.set_drive(R_MTR,FWD,speed)
         
     while (myEncoders.count1 < target):
         if(speed > speed * 0.3):
@@ -76,9 +76,9 @@ def set_speed(distance: float, speed: float, FWD: bool):
             speed = (speed_max - speed_min)*speed_norm + speed_min
             i = i + 1
         left.set_drive(L_MTR,FWD,speed)
-        right.set_drive(R_MTR,FWD,speed)
+        #right.set_drive(R_MTR,FWD,speed)
     left.disable()
-    right.disable()
+    #right.disable()
 
 # +28 degrees is straight ahead
 while(True):
