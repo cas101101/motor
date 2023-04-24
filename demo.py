@@ -42,10 +42,10 @@ def set_speed(distance: float, speed: float, dir: bool):
     ticks_per_rev = 9.7*48
     wheel_radius = 3.25
     
-    # if right.connected == False:
-    #     print("Motor Driver not connected. Check connections.", \
-    #         file=sys.stderr)
-    #     return
+    if left.connected == False:
+        print("Motor Driver not connected. Check connections.", \
+            file=sys.stderr)
+        return
     left.begin()
     #right.begin()
     time.sleep(.250)
