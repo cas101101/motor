@@ -8,7 +8,7 @@ steer.restart()
 steer.move_servo_position(0, 0)
 
 while(True):
-    angle = input("Enter angle: ")
+    angle = int(input("Enter angle: "))
     tic = time.perf_counter()
     if (angle > 0 and angle < 120):
         steer.move_servo_position(0, angle)
