@@ -7,7 +7,8 @@ import qwiic_scmd
 import qwiic_dual_encoder_reader
 
 # The first two I2C channels
-left = qwiic_scmd.QwiicScmd(0x5D)
+# 0x5D
+left = qwiic_scmd.QwiicScmd()
 #right = qwiic_scmd.QwiicScmd(0x58)
 # Initialize Constructor
 steer = pi_servo_hat.PiServoHat()
