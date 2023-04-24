@@ -16,7 +16,7 @@ steer.restart()
 
 # start straight ahead
 steer.move_servo_position(0, 28)
-
+print("Init done")
 def set_angle(angle: float):
     #angle = int(input("Enter angle: "))
     #tic = time.perf_counter()
@@ -66,8 +66,9 @@ def set_speed(distance: float, speed: float, FWD: bool):
     speed = 250
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
     print(target)
+    print(myEncoders.count1)
     i = 0
-    #normalize the speed
+    # normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
     while(myEncoders.count1 < target - target/5): #- target/5
         left.set_drive(L_MTR,FWD,speed)
