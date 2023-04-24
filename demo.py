@@ -26,11 +26,11 @@ def set_angle(angle: float):
     else:
         print("Sorry, angle invalid. Pick a number on the range [-45, 45]")
 
-def set_speed(distance: float, speed: float, FWD: bool):
+def set_speed(distance: float, speed: float, dir: bool):
     DECAY = 0.0003
     R_MTR = 0
     L_MTR = 1
-    if (FWD):
+    if (dir):
         # set forward
         FWD = 0
     else:
