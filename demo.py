@@ -13,11 +13,12 @@ left = qwiic_scmd.QwiicScmd(0x5D)
 steer = pi_servo_hat.PiServoHat()
 steer.restart()
 
-steer.move_servo_position(0, 0)
+# start straight ahead
+steer.move_servo_position(0, 28)
 
 def set_angle(angle: float):
-    angle = int(input("Enter angle: "))
-    tic = time.perf_counter()
+    #angle = int(input("Enter angle: "))
+    #tic = time.perf_counter()
     if (angle > -46 and angle < 46):
         steer.move_servo_position(0, angle+28)
         # +28 degrees is straight ahead
