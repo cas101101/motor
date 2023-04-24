@@ -66,7 +66,7 @@ def set_speed(distance: float, speed: float, dir: bool):
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
     print(target)
     print(myEncoders.count1)
-    left.set_drive(L_MTR,FWD,speed)
+    left.set_drive(R_MTR,FWD,speed)
     time.sleep(5)
     print("done with drive")
     # i = 0
