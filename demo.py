@@ -64,7 +64,7 @@ def set_speed(distance: float, speed: float, dir: bool):
     myEncoders.begin()
     myEncoders.count1 = 0
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
-    print(target)
+    print(target/ticks_per_rev)
     print(myEncoders.count1)
     i = 0
     # normalize the speed
@@ -92,6 +92,7 @@ while(True):
     set_angle(45)
     time.sleep(4)
     set_speed(30, 150, True)
+    time.sleep(4)
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
 
