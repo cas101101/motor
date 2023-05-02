@@ -91,7 +91,7 @@ while(True):
     time.sleep(1)
     set_angle(45)
     time.sleep(1)
-    set_speed(5, 150, True)
+    set_speed(30, 150, True)
     time.sleep(1)
     exit()
     #toc = time.perf_counter()
