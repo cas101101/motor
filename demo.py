@@ -63,13 +63,13 @@ def set_speed(distance: float, speed: float, dir: bool):
     myEncoders = qwiic_dual_encoder_reader.QwiicDualEncoderReader()
     myEncoders.begin()
     myEncoders.count1 = 0
-    target = ((distance/10)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
+    target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
     print(target/ticks_per_rev)
     print(myEncoders.count1)
     i = 0
     # normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
-    while(myEncoders.count1 < target - target/5): #- target/5
+    while(myEncoders.count1 < target - target/10): #- target/5
         left.set_drive(L_MTR,FWD,speed)
         #right.set_drive(R_MTR,FWD,speed)
         
@@ -88,11 +88,12 @@ while(True):
     #tic = time.perf_counter()
     # main code goes here
     set_angle(-45)
-    time.sleep(4)
+    time.sleep(1)
     set_angle(45)
-    time.sleep(4)
-    set_speed(30, 150, True)
-    time.sleep(4)
+    time.sleep(1)
+    set_speed(5, 150, True)
+    time.sleep(1)
+    exit()
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
 
