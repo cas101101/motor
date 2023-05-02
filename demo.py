@@ -133,8 +133,8 @@ def program():
     # time.sleep(1)
     set_speed(distance=35, speed=70, dir=True)
     time.sleep(1)
-    turn_left(speed=150, angle=45)
-    turn_right(speed=150, angle=45)
+    turn_left(speed=50, angle=45)
+    turn_right(speed=50, angle=45)
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
 
