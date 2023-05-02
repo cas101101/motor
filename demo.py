@@ -94,7 +94,7 @@ def turn_right(speed: int, angle: int):
     set_angle(angle)
     time.sleep(1)
     motors.enable()   
-    myEncoders.count1 = 0
+    myEncoders.count2 = 0
     # arbitrary value to get to a 90 degree turn
     target = TURN_TICKS
     # CHANGE TO count2 BECAUSE RIGHT MOTOR
