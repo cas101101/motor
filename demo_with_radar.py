@@ -126,7 +126,7 @@ def program2():
 
 if __name__ == '__main__':
 	try:
-		program()
+		program2()
 	except (KeyboardInterrupt, SystemExit) as exErr:
 		print("Ending demo.py")
 		motors.disable()
