@@ -89,7 +89,7 @@ while(True):
     time.sleep(1)
     set_speed(30, 150, True)
     time.sleep(1)
-    exit()
+    sys.exit(0)
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
 
