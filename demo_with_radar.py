@@ -89,7 +89,7 @@ def set_speed(distance: float, speed: int, dir: bool):
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
         print(abs(myEncoders.count1))
-	di,data = client.get_next()
+        di,data = client.get_next()
     # while (myEncoders.count1 < target):
     #     if(speed > speed * 0.3):
     #         speed_norm = speed_norm*math.exp(-DECAY*i)
