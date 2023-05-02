@@ -60,8 +60,7 @@ def set_angle(angle: float):
     else:
         print("Sorry, angle invalid. Pick a number on the range [-45, 45]")
 
-def set_speed(distance: float, speed: float, dir: bool):
-  
+def set_speed(distance: float, speed: int, dir: bool):
     myEncoders.count1 = 0
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
     #print(target/ticks_per_rev)
