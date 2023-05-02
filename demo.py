@@ -70,7 +70,8 @@ def set_speed(distance: float, speed: int, dir: bool):
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
     while(myEncoders.count1 < target ):#- target/5): #- target/5
         motors.set_drive(L_MTR,FWD,speed)
-        motors.set_drive(R_MTR,BWD,speed)        
+        motors.set_drive(R_MTR,BWD,speed)
+        time.sleep(0.05)        
     # while (myEncoders.count1 < target):
     #     if(speed > speed * 0.3):
     #         speed_norm = speed_norm*math.exp(-DECAY*i)
