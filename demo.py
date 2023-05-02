@@ -74,11 +74,11 @@ def set_speed(distance: float, speed: int, dir: bool):
     motors.disable()
     
 def turn_left(speed: int, angle: int):
-    
+    motors.enable()
     myEncoders.count1 = 0
     # arbitrary value to get to a 90 degree turn
     target = TURN_TICKS
-    set_angle(angle)
+   # set_angle(angle)
     time.sleep(1)
     while(abs(myEncoders.count1) < target): #- target/5
         # help the turn by reducing one motor
@@ -87,11 +87,11 @@ def turn_left(speed: int, angle: int):
         time.sleep(0.05)
         print(abs(myEncoders.count1))  
         # reset to straight ahead
-    set_angle(0)
+   # set_angle(0)
     motors.disable()
 
 def turn_right(speed: int, angle: int):
-    
+    motors.enable()   
     myEncoders.count1 = 0
     # arbitrary value to get to a 90 degree turn
     target = TURN_TICKS
