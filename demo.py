@@ -72,7 +72,7 @@ def set_speed(distance: float, speed: int, dir: bool):
         motors.set_drive(L_MTR,FWD,speed)
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
-        print(myEncoders.count1)      
+        print(abs(myEncoders.count1))      
     # while (myEncoders.count1 < target):
     #     if(speed > speed * 0.3):
     #         speed_norm = speed_norm*math.exp(-DECAY*i)
@@ -91,7 +91,7 @@ def program():
     time.sleep(1)
     set_angle(45)
     time.sleep(1)
-    set_speed(5, 70, True)
+    set_speed(35, 70, True)
     time.sleep(1)
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
