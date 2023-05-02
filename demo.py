@@ -63,6 +63,7 @@ def set_angle(angle: float):
 def set_speed(distance: float, speed: int, dir: bool):
     myEncoders.count1 = 0
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
+    print(abs(target))
     #print(target/ticks_per_rev)
     #print(myEncoders.count1)
     i = 0
@@ -82,6 +83,8 @@ def set_speed(distance: float, speed: int, dir: bool):
         motors.set_drive(L_MTR,FWD,speed)
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
+        print(abs(myEncoders.count1))      
+
         
 
     motors.disable()
