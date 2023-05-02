@@ -1,0 +1,24 @@
+Import Libraries
+
+----------------------
+
+Declare Constants
+
+----------------------
+
+Declare Functions
+
+----------------------
+
+Start Program
+
+  - Start motors
+  - Perform a radar sweep
+  
+  - While distance measured is greater than 20 cm
+      - perform another sweep
+      - overwrite distance variable
+    
+  - Stop motors
+  - Perform a reversing or turning maneuver
+  
