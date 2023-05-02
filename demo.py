@@ -70,6 +70,7 @@ def set_speed(distance: float, speed: int, dir: bool):
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
         print(abs(myEncoders.count1))    
+        motors.disable()
     
 def turn_left(speed: int, angle: int):
     
@@ -86,6 +87,8 @@ def turn_left(speed: int, angle: int):
         print(abs(myEncoders.count1))  
         # reset to straight ahead
         set_angle(0)
+        motors.disable()
+
 def turn_right(speed: int, angle: int):
     
     myEncoders.count1 = 0
@@ -101,6 +104,8 @@ def turn_right(speed: int, angle: int):
         print(abs(myEncoders.count1))  
         # reset to straight ahead
         set_angle(0)
+        motors.disable()
+
     # i = 0
     # while (myEncoders.count1 < target):
     #     if(speed > speed * 0.3):
