@@ -78,16 +78,16 @@ def turn_left(speed: int, angle: int):
     myEncoders.count1 = 0
     # arbitrary value to get to a 90 degree turn
     target = TURN_TICKS
+    set_angle(angle)
+    time.sleep(1)
     while(abs(myEncoders.count1) < target): #- target/5
-        set_angle(angle)
-        time.sleep(1)
         # help the turn by reducing one motor
         motors.set_drive(L_MTR,FWD,0.5*speed)
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
         print(abs(myEncoders.count1))  
         # reset to straight ahead
-        set_angle(0)
+    set_angle(0)
     motors.disable()
 
 def turn_right(speed: int, angle: int):
@@ -95,17 +95,18 @@ def turn_right(speed: int, angle: int):
     myEncoders.count1 = 0
     # arbitrary value to get to a 90 degree turn
     target = TURN_TICKS
+    set_angle(angle)
+    time.sleep(1)
     while(abs(myEncoders.count1) < target): #- target/5
-        set_angle(angle)
-        time.sleep(1)
         # help the turn by reducing one motor
         motors.set_drive(L_MTR,FWD,speed)
         motors.set_drive(R_MTR,BWD,0.5*speed)
         time.sleep(0.05)
         print(abs(myEncoders.count1))  
         # reset to straight ahead
-        set_angle(0)
     motors.disable()
+    set_angle(0)
+
 
     # i = 0
     # while (myEncoders.count1 < target):
