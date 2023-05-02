@@ -28,7 +28,7 @@ def set_angle(angle: float):
 def set_speed(distance: float, speed: float, dir: bool):
     DECAY = 0.0003
     R_MTR = 0
-    L_MTR = 0
+    L_MTR = 1
     if (dir):
         # set forward
         FWD = 0
