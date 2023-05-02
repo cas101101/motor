@@ -13,6 +13,41 @@ motors = qwiic_scmd.QwiicScmd()
 steer = pi_servo_hat.PiServoHat()
 steer.restart()
 
+DECAY = 0.0003
+R_MTR = 0
+L_MTR = 1
+if (dir):
+    # set forward
+    FWD = 0
+    BWD = 1
+else:
+    # set reverse
+    FWD = 1
+    BWD = 0   
+SLEEP = 0.1
+speed_min = 20
+speed_max = 250
+ticks_per_rev = 9.7*48
+wheel_radius = 3.25
+
+if motors.connected == False:
+    print("Motor Driver not connected. Check connections.", \
+        file=sys.stderr)
+    sys.exit(0)
+motors.begin()
+time.sleep(.250)
+
+# Zero Motor Speeds
+motors.set_drive(0,0,0)
+motors.set_drive(1,0,0)
+
+motors.enable()
+print("Motor enabled")
+time.sleep(.250)
+
+myEncoders = qwiic_dual_encoder_reader.QwiicDualEncoderReader()
+myEncoders.begin()
+
 # start straight ahead
 steer.move_servo_position(0, 28)
 print("Init done")
@@ -26,40 +61,7 @@ def set_angle(angle: float):
         print("Sorry, angle invalid. Pick a number on the range [-45, 45]")
 
 def set_speed(distance: float, speed: float, dir: bool):
-    DECAY = 0.0003
-    R_MTR = 0
-    L_MTR = 1
-    if (dir):
-        # set forward
-        FWD = 0
-        BWD = 1
-    else:
-        # set reverse
-        FWD = 1
-        BWD = 0   
-    SLEEP = 0.1
-    speed_min = 20
-    speed_max = 250
-    ticks_per_rev = 9.7*48
-    wheel_radius = 3.25
-    
-    if motors.connected == False:
-        print("Motor Driver not connected. Check connections.", \
-            file=sys.stderr)
-        return
-    motors.begin()
-    time.sleep(.250)
-
-    # Zero Motor Speeds
-    motors.set_drive(0,0,0)
-    motors.set_drive(1,0,0)
-
-    motors.enable()
-    print("Motor enabled")
-    time.sleep(.250)
-    
-    myEncoders = qwiic_dual_encoder_reader.QwiicDualEncoderReader()
-    myEncoders.begin()
+  
     myEncoders.count1 = 0
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
     #print(target/ticks_per_rev)
@@ -76,8 +78,8 @@ def set_speed(distance: float, speed: float, dir: bool):
     #         speed = (speed_max - speed_min)*speed_norm + speed_min
     #         speed = int(speed)
     #         i = i + 1
-        motors.set_drive(L_MTR,FWD,speed)
-        motors.set_drive(R_MTR,BWD,speed)        
+        # motors.set_drive(L_MTR,FWD,speed)
+        # motors.set_drive(R_MTR,BWD,speed)        
 
     motors.disable()
 # +28 degrees is straight ahead
