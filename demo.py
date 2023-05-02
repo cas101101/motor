@@ -90,7 +90,7 @@ def program():
     time.sleep(1)
     set_angle(45)
     time.sleep(1)
-    set_speed(30, 70, True)
+    set_speed(5, 70, True)
     time.sleep(1)
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
