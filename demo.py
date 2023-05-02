@@ -69,7 +69,7 @@ def set_speed(distance: float, speed: float, dir: bool):
     i = 0
     # normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
-    while(myEncoders.count1 < target - target/10): #- target/5
+    while(myEncoders.count1 < target - target/5): #- target/5
         left.set_drive(L_MTR,FWD,speed)
         #right.set_drive(R_MTR,FWD,speed)
         
