@@ -30,6 +30,7 @@ speed_min = 20
 speed_max = 250
 ticks_per_rev = 9.7*48
 wheel_radius = 3.25
+TURN_TICKS = 250
 
 if motors.connected == False:
     print("Motor Driver not connected. Check connections.", \
@@ -76,7 +77,7 @@ def turn_left(speed: int, angle: int):
     
     myEncoders.count1 = 0
     # arbitrary value to get to a 90 degree turn
-    target = 100
+    target = TURN_TICKS
     while(abs(myEncoders.count1) < target): #- target/5
         set_angle(angle)
         time.sleep(1)
@@ -93,7 +94,7 @@ def turn_right(speed: int, angle: int):
     
     myEncoders.count1 = 0
     # arbitrary value to get to a 90 degree turn
-    target = 100
+    target = TURN_TICKS
     while(abs(myEncoders.count1) < target): #- target/5
         set_angle(angle)
         time.sleep(1)
@@ -125,12 +126,14 @@ def turn_right(speed: int, angle: int):
 def program():
     #tic = time.perf_counter()
     # main code goes here
-    set_angle(-45)
+    # set_angle(-45)
+    # time.sleep(1)
+    # set_angle(45)
+    # time.sleep(1)
+    set_speed(distance=35, speed=70, dir=True)
     time.sleep(1)
-    set_angle(45)
-    time.sleep(1)
-    set_speed(35, 70, True)
-    time.sleep(1)
+    turn_left(speed=150, angle=45)
+    turn_right(speed=150, angle=45)
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
 
