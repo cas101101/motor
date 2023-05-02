@@ -97,7 +97,8 @@ def turn_right(speed: int, angle: int):
     myEncoders.count1 = 0
     # arbitrary value to get to a 90 degree turn
     target = TURN_TICKS
-    while(abs(myEncoders.count1) < target): #- target/5
+    # CHANGE TO count2 BECAUSE RIGHT MOTOR
+    while(abs(myEncoders.count2) < target): #- target/5
         # help the turn by reducing one motor
         motors.set_drive(L_MTR,FWD,speed)
         motors.set_drive(R_MTR,BWD,speed/2)
