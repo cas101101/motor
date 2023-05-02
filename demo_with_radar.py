@@ -116,7 +116,7 @@ def program():
     #print(f"Finished in {toc - tic:0.4f} seconds")
     
 def program2():
-  set_speed(35, 70, True)
+  set_speed(100, 70, True)
   time.sleep(1)
   for i in range(3):
       data_info, data = client.get_next()
