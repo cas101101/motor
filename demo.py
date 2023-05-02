@@ -62,8 +62,8 @@ def set_speed(distance: float, speed: float, dir: bool):
     myEncoders.begin()
     myEncoders.count1 = 0
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
-    print(target/ticks_per_rev)
-    print(myEncoders.count1)
+    #print(target/ticks_per_rev)
+    #print(myEncoders.count1)
     i = 0
     # normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
