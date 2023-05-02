@@ -32,9 +32,11 @@ def set_speed(distance: float, speed: float, dir: bool):
     if (dir):
         # set forward
         FWD = 0
+        BWD = 1
     else:
         # set reverse
-        FWD = 1   
+        FWD = 1
+        BWD = 0   
     SLEEP = 0.1
     speed_min = 20
     speed_max = 250
@@ -67,14 +69,14 @@ def set_speed(distance: float, speed: float, dir: bool):
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
     while(myEncoders.count1 < target - target/5): #- target/5
         motors.set_drive(L_MTR,FWD,speed)
-        motors.set_drive(R_MTR,FWD,speed)        
+        motors.set_drive(R_MTR,BWD,speed)        
     while (myEncoders.count1 < target):
         if(speed > speed * 0.3):
             speed_norm = speed_norm*math.exp(-DECAY*i)
             speed = (speed_max - speed_min)*speed_norm + speed_min
             i = i + 1
         motors.set_drive(L_MTR,FWD,speed)
-        motors.set_drive(R_MTR,FWD,speed)        
+        motors.set_drive(R_MTR,BWD,speed)        
 
     motors.disable()
 # +28 degrees is straight ahead
