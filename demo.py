@@ -80,7 +80,9 @@ def set_speed(distance: float, speed: int, dir: bool):
             speed = int(speed)
             i = i + 1
         motors.set_drive(L_MTR,FWD,speed)
-        motors.set_drive(R_MTR,BWD,speed)        
+        motors.set_drive(R_MTR,BWD,speed)
+        time.sleep(0.05)
+        
 
     motors.disable()
 # +28 degrees is straight ahead
