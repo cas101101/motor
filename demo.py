@@ -81,7 +81,7 @@ def set_speed(distance: float, speed: float, dir: bool):
 
     motors.disable()
 # +28 degrees is straight ahead
-while(True):
+def program():
     #tic = time.perf_counter()
     # main code goes here
     set_angle(-45)
@@ -90,7 +90,13 @@ while(True):
     time.sleep(1)
     set_speed(30, 70, True)
     time.sleep(1)
-    sys.exit(0)
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
 
+if __name__ == '__main__':
+	try:
+		program()
+	except (KeyboardInterrupt, SystemExit) as exErr:
+		print("Ending demo.py")
+		motors.disable()
+		sys.exit(0)
