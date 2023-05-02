@@ -121,6 +121,7 @@ def program2():
   for i in range(3):
       data_info, data = client.get_next()
       print("Sweep {}:\n".format(i + 1), data_info, "\n", data, "\n")
+  time.sleep(10)
   client.stop_session()
   client.disconnect()
 
