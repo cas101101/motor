@@ -63,17 +63,44 @@ def set_angle(angle: float):
 def set_speed(distance: float, speed: int, dir: bool):
     myEncoders.count1 = 0
     target = ((distance/100)*ticks_per_rev)/(2*math.pi*(wheel_radius/100))
-    print(abs(target))
-    #print(target/ticks_per_rev)
-    #print(myEncoders.count1)
-    i = 0
-    # normalize the speed
-    speed_norm = (speed - speed_min)/(speed_max - speed_min)
+    #print(abs(target))
     while(abs(myEncoders.count1) < target - target/5): #- target/5
         motors.set_drive(L_MTR,FWD,speed)
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
-        print(abs(myEncoders.count1))      
+        print(abs(myEncoders.count1))    
+    
+def turn_left(speed: int, angle: int):
+    
+    myEncoders.count1 = 0
+    # arbitrary value to get to a 90 degree turn
+    target = 100
+    while(abs(myEncoders.count1) < target): #- target/5
+        set_angle(angle)
+        time.sleep(1)
+        # help the turn by reducing one motor
+        motors.set_drive(L_MTR,FWD,0.5*speed)
+        motors.set_drive(R_MTR,BWD,speed)
+        time.sleep(0.05)
+        print(abs(myEncoders.count1))  
+        # reset to straight ahead
+        set_angle(0)
+def turn_right(speed: int, angle: int):
+    
+    myEncoders.count1 = 0
+    # arbitrary value to get to a 90 degree turn
+    target = 100
+    while(abs(myEncoders.count1) < target): #- target/5
+        set_angle(angle)
+        time.sleep(1)
+        # help the turn by reducing one motor
+        motors.set_drive(L_MTR,FWD,speed)
+        motors.set_drive(R_MTR,BWD,0.5*speed)
+        time.sleep(0.05)
+        print(abs(myEncoders.count1))  
+        # reset to straight ahead
+        set_angle(0)
+    # i = 0
     # while (myEncoders.count1 < target):
     #     if(speed > speed * 0.3):
     #         speed_norm = speed_norm*math.exp(-DECAY*i)
