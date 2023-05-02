@@ -74,16 +74,16 @@ def set_speed(distance: float, speed: int, dir: bool):
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
         print(abs(myEncoders.count1))      
-    while (myEncoders.count1 < target):
-        if(speed > speed * 0.3):
-            speed_norm = speed_norm*math.exp(-DECAY*i)
-            speed = (speed_max - speed_min)*speed_norm + speed_min
-            speed = int(speed)
-            i = i + 1
-        motors.set_drive(L_MTR,FWD,speed)
-        motors.set_drive(R_MTR,BWD,speed)
-        time.sleep(0.05)
-        print(abs(myEncoders.count1))      
+    # while (myEncoders.count1 < target):
+    #     if(speed > speed * 0.3):
+    #         speed_norm = speed_norm*math.exp(-DECAY*i)
+    #         speed = (speed_max - speed_min)*speed_norm + speed_min
+    #         speed = int(speed)
+    #         i = i + 1
+    #     motors.set_drive(L_MTR,FWD,speed)
+    #     motors.set_drive(R_MTR,BWD,speed)
+    #     time.sleep(0.05)
+    #     print(abs(myEncoders.count1))      
 
         
 
