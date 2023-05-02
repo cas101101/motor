@@ -5,6 +5,7 @@ import sys
 import math
 import qwiic_scmd
 import qwiic_dual_encoder_reader
+#import acconeer.exptool as et #library for radar module
 
 # The first two I2C channels
 # 0x5D
