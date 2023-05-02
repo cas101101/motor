@@ -84,7 +84,7 @@ def set_speed(distance: float, speed: int, dir: bool):
     # normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
     di,data = client.get_next();
-    while((abs(myEncoders.count1) < target - target/5) AND (max(data) < 800)): #- target/5
+    while((abs(myEncoders.count1) < target - target/5) and (max(data) < 800)): #- target/5
         motors.set_drive(L_MTR,FWD,speed)
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
