@@ -74,6 +74,7 @@ def set_speed(distance: float, speed: float, dir: bool):
         if(speed > speed * 0.3):
             speed_norm = speed_norm*math.exp(-DECAY*i)
             speed = (speed_max - speed_min)*speed_norm + speed_min
+            speed = int(speed)
             i = i + 1
         motors.set_drive(L_MTR,FWD,speed)
         motors.set_drive(R_MTR,BWD,speed)        
