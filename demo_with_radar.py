@@ -83,12 +83,13 @@ def set_speed(distance: float, speed: int, dir: bool):
     i = 0
     # normalize the speed
     speed_norm = (speed - speed_min)/(speed_max - speed_min)
-    while(abs(myEncoders.count1) < target - target/5): #- target/5
+    di,data = client.get_next();
+    while((abs(myEncoders.count1) < target - target/5) AND (max(data) < 800)): #- target/5
         motors.set_drive(L_MTR,FWD,speed)
         motors.set_drive(R_MTR,BWD,speed)
         time.sleep(0.05)
         print(abs(myEncoders.count1))
-        print("\nmeasure")
+	di,data = client.get_next()
     # while (myEncoders.count1 < target):
     #     if(speed > speed * 0.3):
     #         speed_norm = speed_norm*math.exp(-DECAY*i)
@@ -115,6 +116,8 @@ def program():
     time.sleep(1)
     #toc = time.perf_counter()
     #print(f"Finished in {toc - tic:0.4f} seconds")
+    client.stop_session()
+    client.disconnect()
     
 def program2():
   set_speed(100, 70, True)
@@ -122,13 +125,11 @@ def program2():
   for i in range(3):
       data_info, data = client.get_next()
       print("Sweep {}:\n".format(i + 1), data_info, "\n", data, "\n")
-  time.sleep(10)
-  client.stop_session()
-  client.disconnect()
+
 
 if __name__ == '__main__':
 	try:
-		program2()
+		program1()
 	except (KeyboardInterrupt, SystemExit) as exErr:
 		print("Ending demo.py")
 		motors.disable()
